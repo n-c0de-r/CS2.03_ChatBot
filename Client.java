@@ -1,11 +1,8 @@
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.io.Reader;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -21,7 +18,11 @@ public class Client {
 		colmin.startClient();
 
 		while (true) {
-			colmin.writeMessage("Hello World");
+			System.out.println("Please enter text:");
+			Scanner s = new Scanner(System.in);
+			String m = s.nextLine();
+			
+			colmin.writeMessage(m);
 			readMessage();
 			Thread.sleep(5000);
 		}
