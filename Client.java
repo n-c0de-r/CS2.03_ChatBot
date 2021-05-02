@@ -14,6 +14,7 @@ public class Client {
 	private Socket socket;
 
 	public static void main(String[] args) throws UnknownHostException, IOException, InterruptedException {
+		// Client is called “colmin” for Col(in) & (Ner)min :D
 		Client colmin = new Client("127.0.0.1", 8005);
 		colmin.startClient();
 
@@ -23,7 +24,7 @@ public class Client {
 			String m = s.nextLine();
 			
 			colmin.writeMessage(m);
-			readMessage();
+			colmin.readMessage();
 			Thread.sleep(5000);
 		}
 	}
@@ -54,13 +55,13 @@ public class Client {
 		printWriter = new PrintWriter(output);
 	}
 
-	// new code
-	private static void readMessage() throws IOException {
+	// Read incoming messages and print them out
+	private void readMessage() throws IOException {
 		String s = bufferedReader.readLine();
-		System.out.println("Client got message: " + s);
+		System.out.println("Client got the following: " + s);
 	}
 
-	// Method to write messages inside the client
+	// Method to write messages to the server
 	private void writeMessage(String message) {
 		printWriter.print(message + "\r\n");
 		printWriter.flush();
