@@ -1,5 +1,4 @@
 import java.io.InputStreamReader;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -15,6 +14,7 @@ public class Server {
 	private Scanner scanner;
 
 	public static void main(String[] args) throws IOException {
+		// We were in breakout room nr 5, so sour server and port reflect that :D
 		Server room5 = new Server(8005);
 		room5.startServer();
 	}
@@ -31,7 +31,7 @@ public class Server {
 
 		while (true) {
 			String message = readMessage(scanner);
-			writeMessage(message + " arrived at server");
+			writeMessage(message + "'" + message + "' arrived at server");
 		}
 	}
 
@@ -55,12 +55,12 @@ public class Server {
 		printWriter = new PrintWriter(output);
 	}
 
-	// Method to read messages inside the server
+	// Method to read messages from the client
 	private String readMessage(Scanner scn) throws IOException {
 		return scn.nextLine();
 	}
 
-	// new code
+	// Method to write messages back to the client
 	private void writeMessage(String message) {
 		printWriter.print(message + "\r\n");
 		printWriter.flush();
